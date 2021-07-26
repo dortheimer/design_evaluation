@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
@@ -8,7 +8,7 @@ import Artifact from "../components/Artifact.jsx";
 
 import axios from "axios";
 
-const imagesPath = "http://localhost:4000/";
+const imagesPath = process.env.REACT_APP_SERVER_URL;
 
 class Welcome extends Component {
   state = {

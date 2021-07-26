@@ -33,11 +33,18 @@ Create local config file by duplicating the default configuration file:
 cp config/default.json config/local.json
 ```
 
-Edit the local config file. Make sure to provide the database connection configuration. 
+Edit the backend config file. Make sure to provide the database connection configuration. 
 
 ```bash
 vi config/local.json
+
 ```
+Edit the frontend config file.
+```bash
+vi .env
+
+```
+
 
 Now you can build the database schema. Run migrations to build the DB:
 ```bash
