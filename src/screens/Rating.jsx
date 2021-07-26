@@ -63,38 +63,33 @@ class Welcome extends Component {
     return artifacts.find((artifact) => artifact.idKey == idKey);
   };
 
-  render() {
-    const current = this.getNewCurrentArtifact();
-    if (!current) {
-      return <div>No designs to rate</div>;
-    }
+  renderCouple = (current) => {
     const parent =
       current.parentId != current.idKey
         ? this.getArtifact(current.parentId)
         : null;
 
     return (
-      <Container>
-        <Grid container spacing={3}>
-         
-            {parent && (
-               <Grid item xs={6}>
-                <h1>Original design</h1>
-                <Artifact {...parent} imagesPath={imagesPath} />
-              </Grid>
-            )}
-          
+      <Grid container spacing={3}>
+        {parent && (
           <Grid item xs={6}>
-            <h1>New design</h1>
+            <h1>Original design</h1>
+            <Artifact {...parent} imagesPath={imagesPath} />
+          </Grid>
+        )}
 
-            <Artifact {...current} imagesPath={imagesPath} />
-            {parent && <p>How much did the design improve of worsen:</p>}
-            {!parent && <p>Rate the design</p>}
-            <ButtonGroup
-              color="primary"
-              aria-label="outlined primary button group"
-            >
-              {["Terrible", "Bad", "Mediocre", "Good", "Awesome"].map((item, key) => (
+        <Grid item xs={6}>
+          <h1>New design</h1>
+
+          <Artifact {...current} imagesPath={imagesPath} />
+          {parent && <p>How much did the design improve of worsen:</p>}
+          {!parent && <p>Rate the design</p>}
+          <ButtonGroup
+            color="primary"
+            aria-label="outlined primary button group"
+          >
+            {["Terrible", "Bad", "Mediocre", "Good", "Awesome"].map(
+              (item, key) => (
                 <Button
                   label="Worse quality"
                   key={`btn_${key}`}
@@ -102,12 +97,23 @@ class Welcome extends Component {
                 >
                   {item}
                 </Button>
-              ))}
-            </ButtonGroup>
-          </Grid>
+              )
+            )}
+          </ButtonGroup>
         </Grid>
-      </Container>
+      </Grid>
     );
+  };
+
+  render() {
+    const current = this.getNewCurrentArtifact();
+    if (!current) {
+      return <div>No designs to rate</div>;
+    }
+
+    return <Container>
+      {this.renderCouple(current)}
+    </Container>;
   }
 }
 export default Welcome;

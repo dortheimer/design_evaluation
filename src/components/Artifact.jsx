@@ -29,6 +29,15 @@ class Artifact extends Component {
                 scrolling="no"
               />
             )}
+             {file && file.endsWith(".pdf") && (
+              <iframe
+                title="preview"
+                style={{ width: "100%", height: "300px" }}
+                frameBorder="0"
+                src={`${imagesPath}${file}`}
+                scrolling="no"
+              />
+            )}
             {file && !file.endsWith(".dwg") && (
               <img
                 style={{ width: "100%" }}

@@ -1,4 +1,7 @@
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Rating from "./screens/Rating";
+import ListAll from "./screens/ListAll";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,6 +14,7 @@ function Link(props) {
 }
 function App() {
   return (
+    <Router>
     <div className="App" style={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
@@ -24,9 +28,16 @@ function App() {
         </Toolbar>
       </AppBar>
       <CssBaseline />
-
-      <Rating />
+      <Switch>
+      <Route path="/all">
+        <ListAll />
+      </Route>
+      <Route path="/">
+        <Rating />
+      </Route>
+      </Switch>
     </div>
+    </Router>
   );
 }
 
