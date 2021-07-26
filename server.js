@@ -72,6 +72,9 @@ app.post(
   )
 );
 
+app.use('/', express.static('build'))
+
+
 app.listen(port, () => {
   console.log(`Design Evaluation app is running on port ${port}`);
 });
