@@ -82,13 +82,12 @@ class Welcome extends Component {
           <h1>New design</h1>
 
           <Artifact {...current} imagesPath={imagesPath} />
-          {parent && <p>How much did the design improve of worsen:</p>}
-          {!parent && <p>Rate the design</p>}
+          <p>Evaluate the design quality of this artifact</p>
           <ButtonGroup
             color="primary"
             aria-label="outlined primary button group"
           >
-            {["Terrible", "Bad", "Mediocre", "Good", "Awesome"].map(
+            {["Very bad", "Bad", "Average", "Good", "Very good"].map(
               (item, key) => (
                 <Button
                   label="Worse quality"

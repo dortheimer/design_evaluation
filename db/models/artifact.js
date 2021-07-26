@@ -18,7 +18,7 @@ const factory = (sequelize, DataTypes) => {
       description: DataTypes.STRING,
       embed: DataTypes.STRING(4096),
       file: DataTypes.STRING(1024),
-      parentId: DataTypes.INTEGER,
+      parentId: DataTypes.STRING,
     },
     {
       sequelize,
