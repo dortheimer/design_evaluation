@@ -1,6 +1,7 @@
 import express from "express";
 import session from "express-session";
 import config from "config";
+import path from "path";
 import expressSessionFactory from 'express-session-sequelize';
 
 import { Artifact, ArtifactRatings, sequelize } from "./db/models/index.js";
@@ -72,8 +73,11 @@ app.post(
   )
 );
 
-app.use('/', express.static('build'))
-
+// app.use('/', express.static('build'))
+// Serve react index file
+app.use((req, res) => {
+  res.sendFile(path.join(path.resolve(''), "build", "index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Design Evaluation app is running on port ${port}`);
