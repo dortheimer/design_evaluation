@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Fragment } from 'react';
 
 
 class Artifact extends Component {
@@ -21,6 +22,7 @@ class Artifact extends Component {
             )}
 
             {file && file.endsWith(".dwg") && (
+              <Fragment>
               <iframe
                 title="preview"
                 style={{ width: "100%", height: "300px" }}
@@ -28,6 +30,8 @@ class Artifact extends Component {
                 src={`//sharecad.org/cadframe/load?url=${imagesPath}${file}`}
                 scrolling="no"
               />
+              <a target="blank" href={`//sharecad.org/cadframe/load?url=${imagesPath}${file}`}>View</a>
+              </Fragment>
             )}
              {file && file.endsWith(".pdf") && (
               <iframe
