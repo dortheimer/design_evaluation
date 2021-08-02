@@ -73,7 +73,7 @@ app.post(
   )
 );
 
-// app.use('/', express.static('build'))
+app.use('/', express.static('build'))
 // Serve react index file
 app.use((req, res) => {
   res.sendFile(path.join(path.resolve(''), "build", "index.html"));
